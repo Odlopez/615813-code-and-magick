@@ -64,7 +64,7 @@ var getMaxTime = function (arr) {
 
 var renderText = function (ctx, string, x, y, paragraph) {
 
-  while (~string.indexOf('\n')) {
+  while (string.indexOf('\n') + 1) {
     var subString = string.slice(0, string.indexOf('\n'));
 
     ctx.fillText(subString, x, y);
