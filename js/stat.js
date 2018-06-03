@@ -145,8 +145,11 @@ var histogram = {
     for (var i = 0; i < names.length; i++) {
       var height = Math.floor(heightFactor * times[i]);
       var color = (names[i] === 'Вы') ? this.userColor : getColor();
+      var points = Math.round(times[i]);
 
       this.renderColumn(ctx, names[i], x, y, color, height);
+
+      ctx.fillText(points, x, y - height - this.textIndent * 2);
 
       x += this.columnWidth + this.columnInterval;
     }
