@@ -1,4 +1,5 @@
 'use strict';
+
 var getMaxTime = function (arr) {
   var maxTime = arr[0] || 0;
 
