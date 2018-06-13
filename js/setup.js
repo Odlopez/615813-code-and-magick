@@ -73,6 +73,8 @@ var onSetupOpenClick = function () {
 
 var onSetupCloseClick = function () {
   settingsWindow.classList.add('hidden');
+
+  settingsWindow.removeEventListener(onSetupOpenClick);
 };
 
 var onSetupClosePress = function (evt) {
@@ -82,8 +84,9 @@ var onSetupClosePress = function (evt) {
 };
 
 var onWizardClick = function (colors, parameter, input) {
-  var changesColorElement = function (evt) {
+  return function (evt) {
     var color;
+
     do {
       color = getRandomArrayElement(colors);
     } while (evt.target.style[parameter] === color);
@@ -91,8 +94,6 @@ var onWizardClick = function (colors, parameter, input) {
     evt.target.style[parameter] = color;
     input.value = color;
   };
-
-  return changesColorElement;
 };
 
 setupOpen.addEventListener('click', onSetupOpenClick);
