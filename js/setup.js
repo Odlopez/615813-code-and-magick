@@ -74,7 +74,7 @@ var onSetupOpenClick = function () {
 var onSetupCloseClick = function () {
   settingsWindow.classList.add('hidden');
 
-  settingsWindow.removeEventListener(onSetupOpenClick);
+  settingsWindow.removeEventListener('click', onSetupOpenClick);
 };
 
 var onSetupClosePress = function (evt) {
