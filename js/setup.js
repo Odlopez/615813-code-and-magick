@@ -54,7 +54,7 @@ var renderWizard = function (wizard) {
   return randomWizard;
 };
 
-var onSetupOpenClick = function () {
+var onSetupOpenClick = function (evt) {
   settingsWindow.classList.remove('hidden');
 
   document.addEventListener('keydown', onPopupEscPress);
@@ -64,18 +64,18 @@ var onSetupOpenClick = function () {
   setupClose.addEventListener('click', onSetupCloseClick);
   setupClose.addEventListener('keydown', onSetupClosePress);
 
-  setupOpen.removeEventListener('click', onSetupOpenClick);
-  setupOpen.removeEventListener('keydown', onSetupEnterPress);
+  evt.target.removeEventListener('click', onSetupOpenClick);
+  evt.target.removeEventListener('keydown', onSetupEnterPress);
 };
 
-var onSetupCloseClick = function () {
+var onSetupCloseClick = function (evt) {
   settingsWindow.classList.add('hidden');
 
   wizardCoat.removeEventListener('click', onCoatClick);
   wizardEyes.removeEventListener('click', onWizardEyesClick);
   wizardFireball.removeEventListener('click', onFireballClick);
-  setupClose.removeEventListener('keydown', onSetupClosePress);
-  setupClose.removeEventListener('click', onSetupCloseClick);
+  evt.target.removeEventListener('keydown', onSetupClosePress);
+  evt.target.removeEventListener('click', onSetupCloseClick);
   document.removeEventListener('keydown', onPopupEscPress);
 
   setupOpen.addEventListener('click', onSetupOpenClick);
