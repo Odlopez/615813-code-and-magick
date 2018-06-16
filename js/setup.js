@@ -9,7 +9,7 @@ var WIZARDS_QUANTYTI = 4;
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 
-var settingsWindow = document.querySelector('.setup');
+var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = document.querySelector('.setup-close');
 var similarCharacters = document.querySelector('.setup-similar');
@@ -21,6 +21,10 @@ var wizardEyes = document.querySelector('.wizard-eyes');
 var inputEyesColor = document.querySelector('input[name="eyes-color"]');
 var wizardFireball = document.querySelector('.setup-fireball-wrap');
 var inputFireballColor = document.querySelector('input[name="fireball-color"]');
+var setupPosition = {
+  x: '50%',
+  y: '80px'
+};
 
 var getRandomArrayElement = function (arr) {
   var randomIndexNumber = Math.floor(Math.random() * arr.length);
@@ -54,8 +58,8 @@ var renderWizard = function (wizard) {
   return randomWizard;
 };
 
-var onSetupOpenClick = function (evt) {
-  settingsWindow.classList.remove('hidden');
+var onSetupOpenClick = function () {
+  setup.classList.remove('hidden');
 
   document.addEventListener('keydown', onPopupEscPress);
   wizardCoat.addEventListener('click', onCoatClick);
@@ -64,22 +68,25 @@ var onSetupOpenClick = function (evt) {
   setupClose.addEventListener('click', onSetupCloseClick);
   setupClose.addEventListener('keydown', onSetupClosePress);
 
-  evt.target.removeEventListener('click', onSetupOpenClick);
-  evt.target.removeEventListener('keydown', onSetupEnterPress);
+  setupOpen.removeEventListener('click', onSetupOpenClick);
+  setupOpen.removeEventListener('keydown', onSetupEnterPress);
 };
 
-var onSetupCloseClick = function (evt) {
-  settingsWindow.classList.add('hidden');
+var onSetupCloseClick = function () {
+  setup.classList.add('hidden');
 
   wizardCoat.removeEventListener('click', onCoatClick);
   wizardEyes.removeEventListener('click', onWizardEyesClick);
   wizardFireball.removeEventListener('click', onFireballClick);
-  evt.target.removeEventListener('keydown', onSetupClosePress);
-  evt.target.removeEventListener('click', onSetupCloseClick);
+  setupClose.removeEventListener('keydown', onSetupClosePress);
+  setupClose.removeEventListener('click', onSetupCloseClick);
   document.removeEventListener('keydown', onPopupEscPress);
 
   setupOpen.addEventListener('click', onSetupOpenClick);
   setupOpen.addEventListener('keydown', onSetupEnterPress);
+
+  setup.style.left = setupPosition.x;
+  setup.style.top = setupPosition.y;
 };
 
 var onPopupEscPress = function (evt) {
