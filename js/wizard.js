@@ -8,6 +8,8 @@
   var WIZARDS_QUANTYTI = 4;
 
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
+  var similarCharacters = document.querySelector('.setup-similar');
+  var similarListElement = similarCharacters.querySelector('.setup-similar-list');
 
   var generateWizardsParameters = function (number) {
     var wizardsParameters = [];
@@ -42,5 +44,8 @@
   for (var i = 0; i < WIZARDS_QUANTYTI; i++) {
     fragment.appendChild(renderWizard(wizards[i]));
   }
-})();
 
+  similarListElement.appendChild(fragment);
+
+  similarCharacters.classList.remove('hidden');
+})();
