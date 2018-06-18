@@ -1,9 +1,6 @@
 'use strict';
 
 (function () {
-  var ESC_KEYCODE = 27;
-  var ENTER_KEYCODE = 13;
-
   var getRandomArrayElement = function (arr) {
     var randomIndexNumber = Math.floor(Math.random() * arr.length);
 
@@ -24,13 +21,13 @@
   };
 
   var isEscEvent = function (evt, func) {
-    if (evt.keyCode === ESC_KEYCODE) {
+    if (evt.keyCode === window.constants.ESC_KEYCODE) {
       func();
     }
   };
 
   var isEnterEvent = function (evt, func) {
-    if (evt.keyCode === ENTER_KEYCODE) {
+    if (evt.keyCode === window.constants.ENTER_KEYCODE) {
       func();
     }
   };

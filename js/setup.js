@@ -1,10 +1,6 @@
 'use strict';
 
 (function () {
-  var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-  var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
-  var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
-
   var setup = document.querySelector('.setup');
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = document.querySelector('.setup-close');
@@ -64,9 +60,9 @@
     window.utility.isEnterEvent(evt, onSetupCloseClick);
   };
 
-  var onCoatClick = window.utility.changesColor(COAT_COLORS, 'fill', inputCoatColor);
-  var onWizardEyesClick = window.utility.changesColor(EYES_COLORS, 'fill', inputEyesColor);
-  var onFireballClick = window.utility.changesColor(FIREBALL_COLORS, 'backgroundColor', inputFireballColor);
+  var onCoatClick = window.utility.changesColor(window.constants.COAT_COLORS, 'fill', inputCoatColor);
+  var onWizardEyesClick = window.utility.changesColor(window.constants.EYES_COLORS, 'fill', inputEyesColor);
+  var onFireballClick = window.utility.changesColor(window.constants.FIREBALL_COLORS, 'backgroundColor', inputFireballColor);
 
   setupOpen.addEventListener('click', onSetupOpenClick);
   setupOpen.addEventListener('keydown', onSetupEnterPress);
