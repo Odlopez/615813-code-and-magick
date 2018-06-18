@@ -7,8 +7,10 @@
     FIREBALL_COLORS: ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'],
     SHADOW_SHIFT: [110, 20],
     MESSAGE_FONT: '16px PT Mono',
-    ESC_KEYCODE: 27,
-    ENTER_KEYCODE: 13,
+    KEY_CODE: {
+      ENTER: 13,
+      ESC: 27
+    },
     WIZARD_NAMES: ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'],
     WIZARD_SURNAMES: ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвин'],
     WIZARDS_QUANTYTI: 4

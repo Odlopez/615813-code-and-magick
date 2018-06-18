@@ -21,13 +21,13 @@
   };
 
   var isEscEvent = function (evt, func) {
-    if (evt.keyCode === window.constants.ESC_KEYCODE) {
+    if (evt.keyCode === window.constants.KEY_CODE.ESC) {
       func();
     }
   };
 
   var isEnterEvent = function (evt, func) {
-    if (evt.keyCode === window.constants.ENTER_KEYCODE) {
+    if (evt.keyCode === window.constants.KEY_CODE.ENTER) {
       func();
     }
   };
