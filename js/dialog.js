@@ -12,12 +12,12 @@
       y: evt.clientY
     };
 
-    var flag = false;
+    var isMove = false;
 
     var onHandlerMousemove = function (evtMove) {
       evtMove.preventDefault();
 
-      flag = true;
+      isMove = true;
 
       var shift = {
         x: start.x - evtMove.clientX,
@@ -37,7 +37,7 @@
       document.removeEventListener('mousemove', onHandlerMousemove);
       document.removeEventListener('mouseup', onHandlerMouseup);
 
-      if (flag) {
+      if (isMove) {
         var onClickPreventDefault = function (e) {
           e.preventDefault();
 
