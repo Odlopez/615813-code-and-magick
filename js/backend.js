@@ -14,7 +14,6 @@
       onError('Ошибка - ' + err.name + ' : ' + err.message);
     }
 
-
     loader.addEventListener('error', function () {
       onError('Произошла ошибка при загрузке данных');
     });
