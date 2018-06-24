@@ -21,7 +21,40 @@
     document.body.append(loader);
   };
 
+  var save = function (data, onLoad, onError) {
+    var xhr = new XMLHttpRequest();
+    var URL = 'https://js.dump.academy/code-and-magick';
+
+    xhr.responseType = 'json';
+    xhr.timeout = window.constants.ALLOWABLE_LOAD_TIME;
+
+    xhr.open('POST', URL);
+
+    xhr.send(data);
+
+    xhr.addEventListener('load', function (evt) {
+      try {
+        if (evt.target.status === window.constants.SUCCESS_STATUS) {
+          onLoad();
+        } else {
+          onError('Статус загрузки ' + evt.target.status);
+        }
+      } catch (err) {
+        onError('Ошибка - ' + err.name + ' : ' + err.message);
+      }
+    });
+
+    xhr.addEventListener('timeout', function (evt) {
+      onError('Загрузка не успела произойти за ' + evt.target.timeout + 'ms');
+    });
+
+    xhr.addEventListener('error', function () {
+      onError('Произошла ошибка загрузки данных');
+    });
+  };
+
   window.backend = {
-    load: load
+    load: load,
+    save: save
   };
 })();

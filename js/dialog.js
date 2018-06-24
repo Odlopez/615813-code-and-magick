@@ -53,8 +53,6 @@
   };
 
   var onSetupMouseDown = function (evt) {
-    evt.preventDefault();
-
     var elem = evt.target.closest('img[draggable="true"]');
 
     if (!elem) {
@@ -98,4 +96,5 @@
 
   setup.addEventListener('mousedown', onSetupMouseDown);
   handler.addEventListener('mousedown', onHandlerMousedown);
+
 })();

@@ -10,8 +10,10 @@
   var inputCoatColor = document.querySelector('input[name="coat-color"]');
   var wizardEyes = document.querySelector('.wizard-eyes');
   var inputEyesColor = document.querySelector('input[name="eyes-color"]');
+  var inputUsername = document.querySelector('input[name="username"]');
   var wizardFireball = document.querySelector('.setup-fireball-wrap');
   var inputFireballColor = document.querySelector('input[name="fireball-color"]');
+  var submit = document.querySelector('.setup-submit');
   var setupPosition = {
     x: '50%',
     y: '80px'
@@ -60,12 +62,26 @@
     window.utilities.isEnterEvent(evt, onSetupCloseClick);
   };
 
+  var onSubmitClick = function (evt) {
+    evt.preventDefault();
+
+    var form = evt.target.form;
+
+    if (inputUsername.checkValidity()) {
+      window.backend.save(new FormData(form), onSetupCloseClick, window.utilities.renderMessage);
+    } else {
+      window.utilities.renderMessage(inputUsername.validationMessage);
+      document.removeEventListener('keydown', onPopupEscPress);
+    }
+  };
+
   var onCoatClick = window.utilities.changesColor(window.constants.COAT_COLORS, 'fill', inputCoatColor);
   var onWizardEyesClick = window.utilities.changesColor(window.constants.EYES_COLORS, 'fill', inputEyesColor);
   var onFireballClick = window.utilities.changesColor(window.constants.FIREBALL_COLORS, 'backgroundColor', inputFireballColor);
 
   setupOpen.addEventListener('click', onSetupOpenClick);
   setupOpen.addEventListener('keydown', onSetupEnterPress);
+  submit.addEventListener('click', onSubmitClick);
 
   var fragment = document.createDocumentFragment();
   similarListElement.appendChild(fragment);

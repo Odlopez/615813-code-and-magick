@@ -46,14 +46,37 @@
 
   var isEscEvent = function (evt, func) {
     if (evt.keyCode === window.constants.KEY_CODE.ESC) {
-      func();
+      func(evt);
     }
   };
 
   var isEnterEvent = function (evt, func) {
     if (evt.keyCode === window.constants.KEY_CODE.ENTER) {
-      func();
+      func(evt);
     }
+  };
+
+  var renderErrorMessage = function (message) {
+    var popup = document.createElement('div');
+
+    var onPopupClick = function () {
+
+      document.body.removeChild(popup);
+
+      popup.removeEventListener('click', onPopupClick);
+      document.removeEventListener('keydown', onDcumentKeydown);
+    };
+
+    var onDcumentKeydown = function (evt) {
+      isEscEvent(evt, onPopupClick);
+    };
+
+    popup.style = 'position: fixed; box-sizing: border-box; display: flex; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.8); font-size: 50px; padding: 10px 50px; color: rgb(255, 255, 255); text-align: center; z-index: 10; width: 100%; height: 100%;';
+    popup.textContent = message;
+
+    document.body.insertAdjacentElement('afterbegin', popup);
+    popup.addEventListener('click', onPopupClick);
+    document.addEventListener('keydown', onDcumentKeydown);
   };
 
   window.utilities = {
@@ -61,6 +84,7 @@
     changesColor: changesColorElement,
     isEscEvent: isEscEvent,
     isEnterEvent: isEnterEvent,
-    sort: sortFisherYates
+    sort: sortFisherYates,
+    renderMessage: renderErrorMessage
   };
 })();
