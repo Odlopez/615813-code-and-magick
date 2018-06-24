@@ -49,20 +49,20 @@
   };
 
   var onPopupEscPress = function (evt) {
-    window.utility.isEscEvent(evt, onSetupCloseClick);
+    window.utilities.isEscEvent(evt, onSetupCloseClick);
   };
 
   var onSetupEnterPress = function (evt) {
-    window.utility.isEnterEvent(evt, onSetupOpenClick);
+    window.utilities.isEnterEvent(evt, onSetupOpenClick);
   };
 
   var onSetupClosePress = function (evt) {
-    window.utility.isEnterEvent(evt, onSetupCloseClick);
+    window.utilities.isEnterEvent(evt, onSetupCloseClick);
   };
 
-  var onCoatClick = window.utility.changesColor(window.constants.COAT_COLORS, 'fill', inputCoatColor);
-  var onWizardEyesClick = window.utility.changesColor(window.constants.EYES_COLORS, 'fill', inputEyesColor);
-  var onFireballClick = window.utility.changesColor(window.constants.FIREBALL_COLORS, 'backgroundColor', inputFireballColor);
+  var onCoatClick = window.utilities.changesColor(window.constants.COAT_COLORS, 'fill', inputCoatColor);
+  var onWizardEyesClick = window.utilities.changesColor(window.constants.EYES_COLORS, 'fill', inputEyesColor);
+  var onFireballClick = window.utilities.changesColor(window.constants.FIREBALL_COLORS, 'backgroundColor', inputFireballColor);
 
   setupOpen.addEventListener('click', onSetupOpenClick);
   setupOpen.addEventListener('keydown', onSetupEnterPress);
